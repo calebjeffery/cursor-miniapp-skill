@@ -56,14 +56,17 @@ scaffold is already done.
 <one paragraph from SETTINGS>
 
 ## Suggested skills (in order)
-1. miniapp (Pickup)
+1. miniapp (Pickup) — this session only
 2. grill-with-docs (alignment) — loads grilling + domain-modeling
-3. After alignment: to-spec → to-tickets → implement (or implement alone if small)
+3. After alignment / for all later work: grill-with-docs first (standing rule
+   `.cursor/rules/grill-with-docs.mdc`), then to-spec → to-tickets → implement
+   (or implement alone if small)
 
 ## Guardrails
 - Keep stack and dependencies aligned with register research and ADRs unless
   the alignment grill explicitly changes them
 - Expand scope beyond the lean bar only via ADR
+- Outside miniapp Create/Pickup, always grill-with-docs before implementing
 ```
 
 Also ensure repo-root `MINIAPP.md` exists:

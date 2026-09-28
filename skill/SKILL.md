@@ -128,13 +128,19 @@ Only after continue:
 2. Agentic setup: **setup-matt-pocock-skills** conventions where they fit
    (`CONTEXT.md`, `docs/adr/`, `AGENTS.md`/`CLAUDE.md` agent-skills block, issue
    tracker doc). Copy register glossary/ADRs into the repo.
-3. Write root `MINIAPP.md` and register `links.md` (see [handoff.md](handoff.md) § Write)
-4. `git init` (if needed), initial commit of the skeleton, add remote, push —
+3. **Standing grill rule (required):** copy
+   [templates/grill-with-docs.mdc](templates/grill-with-docs.mdc) to
+   `.cursor/rules/grill-with-docs.mdc` (`alwaysApply: true`). Outside miniapp
+   Create/Pickup, agents must default to **grill-with-docs**. Also add a one-line
+   pointer under `## Agent skills` in `AGENTS.md` or `CLAUDE.md`:
+   `Default interview: grill-with-docs (see .cursor/rules/grill-with-docs.mdc).`
+4. Write root `MINIAPP.md` and register `links.md` (see [handoff.md](handoff.md) § Write)
+5. `git init` (if needed), initial commit of the skeleton, add remote, push —
    matching the user's remote choice. Force-push and secret commits are out of scope.
-5. Ask the user to **review the structure**. Amend until they accept.
+6. Ask the user to **review the structure**. Amend until they accept.
 
-**Done when:** structure accepted, remote has the base commit (or local-only was
-chosen); `STATUS.md` updated.
+**Done when:** structure accepted (including `.cursor/rules/grill-with-docs.mdc`
+present); remote has the base commit (or local-only was chosen); `STATUS.md` updated.
 
 ## Phase 5 — Bare project handoff
 
@@ -192,6 +198,8 @@ Redirect:
 - **Close-out with access** — when Create finishes, always emit clickable Markdown
   links (`https://…`, `file:///…`) for the project's remote and/or local path, and
   open them when possible; never end on handoff text or backtick-only paths.
+- **Standing grill rule** — every scaffolded miniApp gets
+  `.cursor/rules/grill-with-docs.mdc` so non-miniapp work defaults to grill-with-docs.
 
 ### Orchestration notes
 
@@ -207,3 +215,4 @@ Redirect:
 - Register layout and write rules: [register.md](register.md)
 - Research worker brief: [research-brief.md](research-brief.md)
 - Handoff template + pickup: [handoff.md](handoff.md)
+- Standing project rule: [templates/grill-with-docs.mdc](templates/grill-with-docs.mdc)

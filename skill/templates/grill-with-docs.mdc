@@ -1,0 +1,21 @@
+---
+description: >-
+  Default to grill-with-docs for plans and design in this repo; miniapp only for
+  create/pickup.
+alwaysApply: true
+---
+
+# Always grill-with-docs
+
+For any plan, design, feature, or decision work in this project, run
+**grill-with-docs** (Skills: `grilling` + `domain-modeling`) before implementing —
+unless the user is already mid-grill or mid-implement on a settled ticket.
+
+**miniapp** is only for:
+
+- Create — greenfield orchestration that produced this repo
+- Pickup — alignment after `MINIAPP-HANDOFF.md`
+
+Do not re-run the miniapp Create pipeline for ordinary feature work. Prefer the
+Matt Pocock main flow after grilling: `to-spec` → `to-tickets` → `implement` (or
+`implement` alone when the change is small).

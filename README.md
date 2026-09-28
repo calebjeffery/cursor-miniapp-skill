@@ -61,6 +61,8 @@ cursor-miniapp-skill/
 │   ├── handoff.md         # Handoff template + Phase H
 │   └── agents/
 │       └── openai.yaml
+│   └── templates/
+│       └── grill-with-docs.mdc
 └── docs/
     └── CREATION-PROCESS.md
 ```
