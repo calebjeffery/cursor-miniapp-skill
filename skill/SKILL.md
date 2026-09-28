@@ -128,19 +128,24 @@ Only after continue:
 2. Agentic setup: **setup-matt-pocock-skills** conventions where they fit
    (`CONTEXT.md`, `docs/adr/`, `AGENTS.md`/`CLAUDE.md` agent-skills block, issue
    tracker doc). Copy register glossary/ADRs into the repo.
-3. **Standing grill rule (required):** copy
-   [templates/grill-with-docs.mdc](templates/grill-with-docs.mdc) to
-   `.cursor/rules/grill-with-docs.mdc` (`alwaysApply: true`). Outside miniapp
-   Create/Pickup, agents must default to **grill-with-docs**. Also add a one-line
-   pointer under `## Agent skills` in `AGENTS.md` or `CLAUDE.md`:
-   `Default interview: grill-with-docs (see .cursor/rules/grill-with-docs.mdc).`
+3. **Project rules (required):**
+   - Copy [templates/grill-with-docs.mdc](templates/grill-with-docs.mdc) →
+     `.cursor/rules/grill-with-docs.mdc`
+   - Generate `.cursor/rules/project-settings.mdc` from register `SETTINGS.md`
+     using [templates/project-settings.mdc](templates/project-settings.mdc) —
+     fill every section with the locked primary task, lean bar, non-goals,
+     architecture, structure, stack table, and source control. Both rules are
+     `alwaysApply: true`.
+   - Add under `## Agent skills` in `AGENTS.md` or `CLAUDE.md`:
+     `Default interview: grill-with-docs. Project law: .cursor/rules/project-settings.mdc.`
 4. Write root `MINIAPP.md` and register `links.md` (see [handoff.md](handoff.md) § Write)
 5. `git init` (if needed), initial commit of the skeleton, add remote, push —
    matching the user's remote choice. Force-push and secret commits are out of scope.
 6. Ask the user to **review the structure**. Amend until they accept.
 
-**Done when:** structure accepted (including `.cursor/rules/grill-with-docs.mdc`
-present); remote has the base commit (or local-only was chosen); `STATUS.md` updated.
+**Done when:** structure accepted; both `.cursor/rules/grill-with-docs.mdc` and
+`.cursor/rules/project-settings.mdc` exist and reflect SETTINGS; remote has the
+base commit (or local-only was chosen); `STATUS.md` updated.
 
 ## Phase 5 — Bare project handoff
 

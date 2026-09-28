@@ -63,10 +63,12 @@ scaffold is already done.
    (or implement alone if small)
 
 ## Guardrails
-- Keep stack and dependencies aligned with register research and ADRs unless
-  the alignment grill explicitly changes them
+- Keep stack and dependencies aligned with register research, ADRs, and
+  `.cursor/rules/project-settings.mdc` unless the alignment grill explicitly changes them
 - Expand scope beyond the lean bar only via ADR
 - Outside miniapp Create/Pickup, always grill-with-docs before implementing
+- If project-settings.mdc is missing or drifts from SETTINGS, regenerate it from
+  the register before further build work
 ```
 
 Also ensure repo-root `MINIAPP.md` exists:

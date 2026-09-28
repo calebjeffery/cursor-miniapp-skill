@@ -63,6 +63,7 @@ cursor-miniapp-skill/
 │       └── openai.yaml
 │   └── templates/
 │       └── grill-with-docs.mdc
+│       └── project-settings.mdc
 └── docs/
     └── CREATION-PROCESS.md
 ```

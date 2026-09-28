@@ -1,0 +1,48 @@
+---
+description: >-
+  Locked miniApp project settings (lean bar, architecture, structure, stack).
+  Fill from register SETTINGS.md at scaffold time; keep alwaysApply true.
+alwaysApply: true
+---
+
+# Project settings
+
+Settled during miniapp Create. Treat as project law unless an ADR overturns them.
+Source of truth for the full record: register `SETTINGS.md` (and `MINIAPP.md`).
+
+## Primary task
+
+<one sentence from SETTINGS>
+
+## Lean bar
+
+<from SETTINGS — smallest maintainable surface for this repo>
+
+## Non-goals
+
+- <from SETTINGS>
+
+## Architecture
+
+<from SETTINGS>
+
+## Project structure
+
+<from SETTINGS>
+
+## Stack (and where used)
+
+| Layer | Language / runtime | Libraries |
+|-------|--------------------|-----------|
+| <from SETTINGS> | | |
+
+## Source control
+
+- Host / remote / visibility: <from SETTINGS>
+
+## Agent habits
+
+- Honour the lean bar: reuse, thin maintained libs, SOLID seams at this scale
+- Do not add dependencies or layers outside the stack table without an ADR
+- Match the settled architecture and folder structure when adding code
+- Outside miniapp Create/Pickup, follow `.cursor/rules/grill-with-docs.mdc`
