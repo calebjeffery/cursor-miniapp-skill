@@ -126,3 +126,16 @@ Before recommending libraries for a new miniApp:
 2. Open matching `stacks/<stack-slug>/` and prior `research/` files
 3. Reuse what still holds; only re-research what is missing or stale
 4. Note reuse in the new project's `research/` ("carried from `<slug>`")
+
+## links.md
+
+Always filled at Create close-out (Phase 5). At minimum:
+
+```markdown
+# Links — <slug>
+
+- Local path: `<absolute path>`
+- Remote URL: `<https project page or —>`
+- Clone URL: `<… or —>`
+- Handoff: `<absolute path to MINIAPP-HANDOFF.md>`
+```

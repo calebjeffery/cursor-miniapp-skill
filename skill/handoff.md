@@ -6,6 +6,21 @@ Create `MINIAPP-HANDOFF.md` at the **new project root** and record paths in
 register `links.md`. This is a **bare** handoff: enough for a fresh agent to
 start Pickup, not a dump of the whole chat.
 
+### links.md (required at close-out)
+
+```markdown
+# Links — <slug>
+
+- Local path: `<absolute path>`
+- Remote URL: `<https project page or — if local-only>`
+- Clone URL: `<git@… or https://….git or —>`
+- Handoff: `<absolute path to MINIAPP-HANDOFF.md>`
+```
+
+After writing the handoff, the orchestrator **must** surface these links in the
+closing message and open the project (editor folder + remote page when present)
+per SKILL.md Phase 5 Close-out.
+
 ```markdown
 # MiniApp handoff — <project name>
 
@@ -25,7 +40,8 @@ scaffold is already done.
 - Architecture:
 - Structure:
 - Stack:
-- Remote:
+- Local path:
+- Remote URL:
 
 ## Lean bar
 <one paragraph from SETTINGS>
@@ -46,6 +62,8 @@ Also ensure repo-root `MINIAPP.md` exists:
 ```markdown
 # MiniApp
 Slug: `<slug>`
+Local: `<absolute path>`
+Remote: `<https URL or local-only>`
 Register: `~/.agents/miniapp-register/projects/<slug>/`
 Handoff: see `MINIAPP-HANDOFF.md`
 ```
