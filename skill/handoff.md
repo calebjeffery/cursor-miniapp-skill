@@ -2,15 +2,16 @@
 
 ## Write (end of creation)
 
-Create `MINIAPP-HANDOFF.md` at the **new project root** (and keep a copy pointer
-in the register `links.md`). This is a **bare** handoff: enough for a fresh
-agent to start Phase H, not a dump of the whole chat.
+Create `MINIAPP-HANDOFF.md` at the **new project root** and record paths in
+register `links.md`. This is a **bare** handoff: enough for a fresh agent to
+start Pickup, not a dump of the whole chat.
 
 ```markdown
 # MiniApp handoff — <project name>
 
 ## Pickup
-Invoke the **miniapp** skill in this repo (Phase H). Do not scaffold again.
+Invoke the **miniapp** skill in this repo (Pickup mode). Stay on alignment;
+scaffold is already done.
 
 ## Register
 - Slug: `<slug>`
@@ -27,17 +28,17 @@ Invoke the **miniapp** skill in this repo (Phase H). Do not scaffold again.
 - Remote:
 
 ## Lean bar
-<one paragraph>
+<one paragraph from SETTINGS>
 
 ## Suggested skills (in order)
-1. miniapp (Phase H pickup)
+1. miniapp (Pickup)
 2. grill-with-docs (alignment) — loads grilling + domain-modeling
 3. After alignment: to-spec → to-tickets → implement (or implement alone if small)
 
-## Do not
-- Re-pick the stack unless the alignment grill overturns it
-- Add dependencies not justified by register research
-- Expand beyond the lean bar without an ADR
+## Guardrails
+- Keep stack and dependencies aligned with register research and ADRs unless
+  the alignment grill explicitly changes them
+- Expand scope beyond the lean bar only via ADR
 ```
 
 Also ensure repo-root `MINIAPP.md` exists:
@@ -57,7 +58,11 @@ Commit these with the skeleton when the user accepts structure.
 2. RAG: open `INDEX.md`, then matching stack + this project's `research/`
 3. Run grill-with-docs to align the user (architecture, seams, lean bar,
    first vertical slice) — decisions still belong to the user
-4. Keep pushing **little code, reuse, SOLID, good data structures, design
-   patterns, maintainable and scalable**
+4. Re-state the **lean bar** from SETTINGS; re-litigate stack only if the grill
+   overturns it
 5. When frontier is empty and user confirms, stop or continue into the main
    engineering flow they choose
+
+**Done when:** grill frontier empty, user confirms alignment; then stop or hand
+off to the flow they choose (see Suggested skills). Update register `STATUS.md`
+checkbox H.

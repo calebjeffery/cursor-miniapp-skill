@@ -1,84 +1,69 @@
 ---
 name: miniapp
 description: >-
-  Orchestrate a greenfield miniApp: grill project settings with docs, pick any
-  language stack, research the leanest libraries (SOLID, small surface), index
-  findings in the miniapp register for RAG, check free similar projects, scaffold
-  structure + agentic setup, git init/push, then hand off for an alignment grill
-  in the new repo. Use when the user says miniapp, miniApp, new mini project,
-  stack-agnostic tiny app, or wants a lean greenfield scaffold not locked to
-  Windows or tinyapp.
+  Orchestrates lean, stack-agnostic greenfield miniApps (settings grill,
+  register RAG, research, scaffold, handoff).
 disable-model-invocation: true
 ---
 
 # MiniApp — lean greenfield orchestrator
 
-Spin up a **mini** project: as little code as possible, still maintainable and
-scalable. Lineage is **tinyapp** (wrap the platform, one increment at a time,
-measure cost) without locking to Windows or any one stack — the user chooses.
+**Naming:** invoke `miniapp`; product concept **miniApp**; files `MINIAPP.md` /
+`MINIAPP-HANDOFF.md`.
 
-This skill **orchestrates**. It does not invent a parallel interview style:
-settings and alignment grills run through Matt Pocock's **grill-with-docs**
-(grilling + domain-modeling). Research runs as a **subagent**. Memory lives in
-the **miniapp register** so later miniApps can RAG prior stack work.
+Spin up a **mini** project under a **lean bar**: smallest maintainable surface —
+reuse, SOLID seams, explicit data structures and patterns at this scale. Lineage
+is **tinyapp** (wrap the platform, one increment at a time) without locking to
+Windows or any one stack — the user chooses.
 
-## When this skill applies
+This skill **orchestrates**. Settings and alignment grills run through
+**grill-with-docs** (Skills: `grilling`, `domain-modeling`). Research runs as a
+**subagent**. Memory lives in the **miniapp register** so later miniApps can RAG
+prior stack work.
 
-- User says `miniapp`, `miniApp`, "lean greenfield", "tiny but any stack"
-- New project creation where stack, remote, and architecture are still open
+## Mode (run first)
 
-Redirect:
-- Byte-obsessed native Win32 / ml64 / Crinkler → **tinyapp**
-- Already inside a settled repo with a feature idea → **grill-with-docs** / main flow
-- Fog too big for one session → **wayfinder**, then return here only for scaffold
-
-## Hard constraints
-
-- **Stack is chosen, not assumed.** Never default to Windows-only or a fixed language.
-- **Lean surface.** Prefer the tiniest maintained libraries that still obey SOLID,
-  clear data structures, and named design patterns. Reuse over rewrite.
-- **Register every durable decision.** Settings, research, similar-project finds,
-  and handoff pointers go in the miniapp register (see [register.md](register.md)).
-- **No scaffold until settings are locked** and the user confirms the creation workflow.
-- **Inform before inventing.** Surface free similar projects first; ask before cloning a review fork.
+1. **Pickup** — repo has `MINIAPP-HANDOFF.md` (or user opened for alignment) →
+   follow [handoff.md](handoff.md) § Pickup only. Skip Phases 0–5.
+2. **Create** — no handoff → run Phases 0–5 in order. Stop after Phase 5 unless
+   the user asks for pickup in-session.
 
 ## Checklist
 
-Copy and keep updated:
+Create/update `~/.agents/miniapp-register/projects/<slug>/STATUS.md` from this
+list after each phase (see [register.md](register.md)).
 
 ```
 MiniApp progress:
-- [ ] 0. Workflow clarified (how new projects are created here)
+- [ ] 0. Workflow clarified
 - [ ] 1. Register entry created; slug known
 - [ ] 2. Settings grill done (arch, structure, VCS/remote, stack + where used)
 - [ ] 3. Stack research worker done; indexed for RAG
-- [ ] 4. Similar free projects reported; user chose continue | review-fork
-- [ ] 5. Structure + agentic setup scaffolded; git init + remote push
-- [ ] 6. User reviewed structure
-- [ ] 7. Bare handoff written into the new project
+- [ ] 4. Similar free projects reported; continue | review-fork chosen
+- [ ] 5. Structure + agentic setup; git init/push; structure accepted; handoff written
+- [ ] H. Pickup alignment (new session only)
 ```
 
 ## Phase 0 — Clarify the creation workflow
 
-Before any settings questions, state the pipeline in one short block and get
+Before settings questions, state the pipeline in one short block and get
 explicit OK (or edits):
 
 1. Grill project **settings** (architecture, structure, source control, stack)
-2. Research **lean libraries** for that stack; write into the register RAG index
+2. Research **lean libraries**; write into the register RAG index
 3. Search for **free similar projects**; offer a review-fork path
 4. Scaffold **structure + agentic setup**; `git init` and push to the chosen remote
 5. User reviews structure
-6. Write a **bare handoff** so opening the new project starts an alignment grill
-   that pulls register research and re-runs grill-with-docs
+6. Write a **bare handoff** so opening the new project starts Pickup alignment
 
-**Done when:** user confirms or amends this workflow. Do not skip.
+**Done when:** user confirms or amends this workflow; `STATUS.md` updated.
 
 ## Phase 1 — Register + settings grill
 
-1. Create a register entry (`~/.agents/miniapp-register/…`) per [register.md](register.md).
-2. Run **grill-with-docs** (Skill tool: `grilling` + `domain-modeling`). Prefer a
-   working directory that will hold early docs; if none exists yet, grill against
-   the register project folder and copy glossary/ADRs into the repo at scaffold time.
+1. Create a register entry per [register.md](register.md).
+2. Run **grill-with-docs**. Prefer a working directory that will hold early docs;
+   if none exists yet, grill against the register project folder and copy
+   glossary/ADRs into the repo at scaffold time.
 
 Frontier must cover, in dependency order (one question per turn unless they ask
 for the full frontier):
@@ -90,31 +75,24 @@ for the full frontier):
 | Source control + remote | git host (GitHub / Gitea / GitLab / Cursor / local-only); repo name; visibility |
 | Language stack + where used | languages, runtimes, frameworks — and which layer each belongs to (UI, API, data, scripts, CI) |
 
-Also settle: primary task in one sentence, non-goals, and the **lean bar**
-(what "as little code as possible" means for this project).
+Also settle: primary task in one sentence, non-goals, and the **lean bar** for
+this project.
 
-Persist every settled answer into the register `SETTINGS.md` and any
-`CONTEXT.md` / ADRs as they crystallise.
+Persist every settled answer into register `SETTINGS.md` and any `CONTEXT.md` /
+ADRs as they crystallise.
 
-**Done when:** frontier empty and user confirms shared understanding of settings.
+**Done when:** frontier empty, user confirms shared understanding of settings;
+`STATUS.md` updated.
 
 ## Phase 2 — Stack research worker
 
 Dispatch a **subagent** (background if available; otherwise a tightly scoped
-Task) with the brief in [research-brief.md](research-brief.md).
-
-The worker must:
-
-1. Prefer **primary sources** (official docs, package registries, source repos)
-2. Rank candidates by **small surface** × **maintenance** × SOLID fit
-3. Name relevant **data structures** and **design patterns** with justification
-4. Write cited Markdown into the register project's `research/` and update the
-   global RAG index (`INDEX.md` + stack shard)
+Task) with [research-brief.md](research-brief.md) (SETTINGS fields filled in).
 
 While it runs, ask only frontier questions that do not depend on its output.
 
-**Done when:** research files exist, index entries point at them, and you have
-summarised the recommendation to the user for a quick confirm/amend.
+**Done when:** research files exist, index entries point at them, recommendation
+summarised for user confirm/amend; `STATUS.md` updated.
 
 ## Phase 3 — Similar free projects
 
@@ -129,9 +107,9 @@ Ask (one question):
 - **Spin a review project** (second miniApp / clone path) to study the similar work first
 
 If they pick review: create/register that review track, pause or fork this
-checklist, and do not pretend the original scaffold is done.
+checklist; original scaffold stays incomplete until they resume.
 
-**Done when:** user chose continue or review-fork and the choice is logged in the register.
+**Done when:** continue | review-fork logged in the register; `STATUS.md` updated.
 
 ## Phase 4 — Scaffold, agentic setup, git
 
@@ -139,52 +117,61 @@ Only after continue:
 
 1. Create the project directory and **bare structure** matching settled settings
    (configs, folder skeleton, README stub — not feature code)
-2. Agentic setup: run **setup-matt-pocock-skills** conventions where they fit
+2. Agentic setup: **setup-matt-pocock-skills** conventions where they fit
    (`CONTEXT.md`, `docs/adr/`, `AGENTS.md`/`CLAUDE.md` agent-skills block, issue
    tracker doc). Copy register glossary/ADRs into the repo.
-3. Drop a pointer file `MINIAPP.md` in the repo root linking to the register slug
+3. Write root `MINIAPP.md` and register `links.md` (see [handoff.md](handoff.md) § Write)
 4. `git init` (if needed), initial commit of the skeleton, add remote, push —
-   matching the user's remote choice. Never force-push; never commit secrets.
+   matching the user's remote choice. Force-push and secret commits are out of scope.
 5. Ask the user to **review the structure**. Amend until they accept.
 
-**Done when:** structure accepted, remote has the base commit (or local-only was chosen).
+**Done when:** structure accepted, remote has the base commit (or local-only was
+chosen); `STATUS.md` updated.
 
 ## Phase 5 — Bare project handoff
 
-Write `MINIAPP-HANDOFF.md` in the new repo using [handoff.md](handoff.md).
+Write `MINIAPP-HANDOFF.md` and root `MINIAPP.md` per [handoff.md](handoff.md) § Write.
 
 Tell the user: open the new project in a fresh session and invoke **miniapp**
-(or open with the handoff as the prompt). The pickup path is Phase H below.
+(Pickup mode).
 
-**Done when:** handoff file is committed (or staged for the user) and they know
-how to pick it up.
+**Done when:** handoff committed or staged; user knows how to pick up; `STATUS.md` updated.
 
-## Phase H — Handoff pickup (new project session)
+## Phase H — Handoff pickup
 
-When the user opens a miniApp project and this skill is invoked with an existing
-`MINIAPP-HANDOFF.md` / register pointer:
+Execute only in **Pickup** mode. Steps and completion: [handoff.md](handoff.md) § Pickup.
 
-1. Load register entry + RAG-relevant stack research from the index
-2. Run **grill-with-docs** again to align the user with the miniApp's settled
-   nature, stack choices, and lean bar
-3. Re-assert: little code, reuse, SOLID, good data structures, design patterns,
-   maintainable and scalable
-4. Only after alignment, merge onto the main engineering flow
-   (`to-spec` / `to-tickets` / `implement` as size demands)
+## Reference
 
-**Done when:** frontier empty and user confirms alignment; then stop or hand to
-the next skill they choose.
+### When this skill applies
 
-## Orchestration notes
+- User says `miniapp`, `miniApp`, "lean greenfield", "tiny but any stack"
+- New project creation where stack, remote, and architecture are still open
+
+Redirect:
+
+- Byte-obsessed native Win32 / ml64 / Crinkler → **tinyapp**
+- Already inside a settled repo with a feature idea → **grill-with-docs** / main flow
+- Fog too big for one session → **wayfinder**, then return here only for scaffold
+
+### Hard constraints
+
+- **Stack is chosen in the settings grill**, not assumed.
+- Honour the **lean bar** from SETTINGS (reuse over rewrite; thin maintained libs).
+- **Register every durable decision** (see [register.md](register.md)).
+- **Scaffold only after** settings are locked and the user confirms the creation workflow.
+- **Inform before inventing** — surface free similar projects first; ask before a review fork.
+
+### Orchestration notes
 
 - **Facts** (registry APIs, license text, whether a remote exists): look up or
-  dispatch a subagent — do not ask the user.
+  dispatch a subagent.
 - **Decisions**: always the user's; grill one frontier question at a time.
 - If `AskQuestion` exists, use it for fixed-choice settings; otherwise use the
   grilling prose format.
 - Keep register paths absolute and stable so other sessions can RAG them.
 
-## Additional resources
+### Additional resources
 
 - Register layout and write rules: [register.md](register.md)
 - Research worker brief: [research-brief.md](research-brief.md)

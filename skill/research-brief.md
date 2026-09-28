@@ -38,8 +38,14 @@ and patterns that keep code volume low while staying solid for growth.
    strategy, repository, etc.)
 6. **Reuse** — prefer stdlib / existing platform capability over a new dependency
 
-Reject: kitchen-sink frameworks, abandoned packages, "enterprise" layers that
-duplicate what the runtime already provides, second ORMs, duplicate HTTP stacks.
+## Deprioritize (pick the smaller default instead)
+
+| Temptation | Prefer |
+|------------|--------|
+| Kitchen-sink framework | Thin lib or stdlib for the one job |
+| Abandoned package | Maintained alternative or platform API |
+| Second ORM / HTTP stack | The one already chosen in SETTINGS |
+| Enterprise layer duplicating the runtime | Direct use of the runtime feature |
 
 ## Method
 
@@ -54,7 +60,8 @@ duplicate what the runtime already provides, second ORMs, duplicate HTTP stacks.
 - Recommended module/folder seams matching the chosen architecture
 - Data structures for the core domain entities (and why)
 - Patterns that keep the codebase lean at the stated scale
-- Explicit "do not introduce yet" list (premature abstractions)
+- **Defer until scale demands:** list with explicit triggers (e.g. second adapter,
+  second transport, multi-tenant tenancy)
 
 ## Done means
 

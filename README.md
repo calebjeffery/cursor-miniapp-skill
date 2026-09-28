@@ -70,6 +70,10 @@ cursor-miniapp-skill/
 - [cursor-tinyapp-skill](https://github.com/calebjeffery/cursor-tinyapp-skill) — Win32 / ml64 size-obsessed track
 - [mattpocock/skills](https://github.com/mattpocock/skills) — grill-with-docs and engineering flow
 
+## Skill tests
+
+Pressure tests and optimisation notes: [docs/SKILL-TESTS.md](docs/SKILL-TESTS.md).
+
 ## License
 
 MIT — see [LICENSE](LICENSE).

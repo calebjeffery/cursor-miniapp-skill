@@ -21,8 +21,8 @@ instead of rediscovering the same stack facts.
         └── INDEX.md         # Cross-project notes for this stack
 ```
 
-Expand `~` to the user's home directory. On this machine that is typically
-`C:\Users\<user>\.agents\miniapp-register\`.
+Resolve `~` via the environment home directory (`$HOME` / `%USERPROFILE%`); do
+not hardcode OS-specific paths in new entries.
 
 ## Slug
 
@@ -34,8 +34,32 @@ append a short year-month suffix (`family-os-planner-2026-09`).
 1. **Single source of truth.** A decision lives in `SETTINGS.md` or one ADR —
    the index only gists and links.
 2. **Update INDEX.md** whenever you add research or finish a phase.
-3. **No secrets.** Remotes, paths, stack names — yes. Tokens, passwords — never.
-4. **Cite.** Every research claim points at a primary URL or package page.
+3. **Update STATUS.md** after every phase (timestamp + checkbox).
+4. **No secrets.** Remotes, paths, stack names — yes. Tokens, passwords — never.
+5. **Cite.** Every research claim points at a primary URL or package page.
+
+## STATUS.md template
+
+```markdown
+# Status — <slug>
+
+Updated: <ISO-8601>
+
+```
+MiniApp progress:
+- [ ] 0. Workflow clarified
+- [ ] 1. Register entry created; slug known
+- [ ] 2. Settings grill done
+- [ ] 3. Stack research worker done; indexed for RAG
+- [ ] 4. Similar free projects; continue | review-fork
+- [ ] 5. Scaffold + handoff
+- [ ] H. Pickup alignment
+```
+
+## Notes
+- Phase: <n or H>
+- Similar-project choice: <continue | review-fork | —>
+```
 
 ## SETTINGS.md template
 
@@ -46,7 +70,7 @@ append a short year-month suffix (`family-os-planner-2026-09`).
 <one sentence>
 
 ## Lean bar
-<what "as little code as possible" means here>
+<what "smallest maintainable surface" means here>
 
 ## Non-goals
 -
