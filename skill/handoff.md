@@ -17,9 +17,18 @@ start Pickup, not a dump of the whole chat.
 - Handoff: `<absolute path to MINIAPP-HANDOFF.md>`
 ```
 
-After writing the handoff, the orchestrator **must** surface these links in the
-closing message and open the project (editor folder + remote page when present)
-per SKILL.md Phase 5 Close-out.
+After writing the handoff, the orchestrator **must** surface these as **clickable
+Markdown links** in the closing message (and open the project per SKILL.md Phase 5
+Close-out):
+
+```markdown
+- Repo: [project on GitHub](https://github.com/org/repo)
+- Local: [open folder](file:///P:/Projects/repo)
+- Handoff: [MINIAPP-HANDOFF.md](file:///P:/Projects/repo/MINIAPP-HANDOFF.md)
+```
+
+Use `https://` for remotes and `file:///` (forward slashes) for local paths. Do not
+leave access as backtick-only paths.
 
 ```markdown
 # MiniApp handoff — <project name>

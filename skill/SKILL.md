@@ -145,22 +145,25 @@ Record final paths in register `links.md`.
 
 Creation is incomplete until the user can reach the project. Always:
 
-1. Resolve from `links.md` / git remote: **remote URL** (HTTPS page or clone URL) and
-   **absolute local path**
-2. Put both in the closing message as clickable Markdown links (file URL or path for
-   local; https for remote)
+1. Resolve from `links.md` / git remote: **remote URL** (HTTPS project page preferred)
+   and **absolute local path**
+2. Emit both as **clickable Markdown links** in the closing message — never bare paths
+   in backticks alone:
+   - Remote: `[repo on <host>](https://…)` (project page, not only the `.git` clone URL)
+   - Local: `[open local folder](file:///…)` using a `file:///` URI with forward slashes
+     (Windows example: `file:///P:/Projects/foo`); also link the handoff file the same way
 3. **Open** when the harness allows it — prefer opening the project folder in the
    editor; also open the remote project page in the browser when a remote exists
-4. If open is unavailable, still print the links and say how to open them
+4. If open is unavailable, the clickable links are the fallback — still print them
 
-Local-only projects: open/show the local path. Remote projects: show **both**
-remote URL and local path, and open both when possible.
+Local-only projects: clickable local + handoff links. Remote projects: clickable
+**remote and local** (and handoff).
 
 Tell the user: after opening, invoke **miniapp** in Pickup mode.
 
 **Done when:** handoff committed or staged; `links.md` has local + remote (or
-local-only); closing message shows those URLs; open attempted or explicit fallback;
-`STATUS.md` updated.
+local-only); closing message has clickable Markdown links for each; open attempted
+or explicit fallback; `STATUS.md` updated.
 
 ## Phase H — Handoff pickup
 
@@ -186,8 +189,9 @@ Redirect:
 - **Register every durable decision** (see [register.md](register.md)).
 - **Scaffold only after** project-creation workflow (Phase 0) and settings (Phase 1) are locked.
 - **Inform before inventing** — surface free similar projects first; ask before a review fork.
-- **Close-out with access** — when Create finishes, always show (and open when possible)
-  the updated project's remote URL and/or local path; never end on handoff text alone.
+- **Close-out with access** — when Create finishes, always emit clickable Markdown
+  links (`https://…`, `file:///…`) for the project's remote and/or local path, and
+  open them when possible; never end on handoff text or backtick-only paths.
 
 ### Orchestration notes
 
