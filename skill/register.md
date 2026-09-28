@@ -47,7 +47,7 @@ Updated: <ISO-8601>
 
 ```
 MiniApp progress:
-- [ ] 0. Workflow clarified
+- [ ] 0. Project-creation workflow clarified
 - [ ] 1. Register entry created; slug known
 - [ ] 2. Settings grill done
 - [ ] 3. Stack research worker done; indexed for RAG
@@ -75,6 +75,14 @@ MiniApp progress:
 ## Non-goals
 -
 
+## Project creation
+- Local parent path:
+- Naming convention:
+- New repo vs monorepo/nest:
+- Who creates the remote:
+- Default visibility:
+- Bootstrap habits:
+
 ## Architecture
 -
 
@@ -92,9 +100,8 @@ MiniApp progress:
 |-------|--------------------|-----------|
 |       |                    |           |
 
-## Workflow confirmation
-- User confirmed creation pipeline: yes/no
-- Similar-project choice: continue | review-fork
+## Similar-project choice
+- continue | review-fork
 ```
 
 ## INDEX.md entry shape

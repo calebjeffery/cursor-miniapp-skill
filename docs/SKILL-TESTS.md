@@ -10,7 +10,7 @@ tests 1 and 5.
 
 | # | Scenario | Expected | Result |
 |---|----------|----------|--------|
-| 1 | Rush scaffold / skip workflow | A — workflow + settings first | PASS |
+| 1 | Rush scaffold / skip project-creation grill | A — grill how projects are born, then settings (never ask to approve skill phases) | PASS |
 | 2 | Assume TypeScript CLI stack | A — grill stack, never assume | PASS |
 | 3 | Skip similar-projects gate | A — report then continue\|review-fork | PASS |
 | 4 | Byte goals under miniapp | A — redirect to tinyapp | PASS |

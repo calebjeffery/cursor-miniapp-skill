@@ -35,7 +35,7 @@ list after each phase (see [register.md](register.md)).
 
 ```
 MiniApp progress:
-- [ ] 0. Workflow clarified
+- [ ] 0. Project-creation workflow clarified (where/how projects are born)
 - [ ] 1. Register entry created; slug known
 - [ ] 2. Settings grill done (arch, structure, VCS/remote, stack + where used)
 - [ ] 3. Stack research worker done; indexed for RAG
@@ -44,19 +44,27 @@ MiniApp progress:
 - [ ] H. Pickup alignment (new session only)
 ```
 
-## Phase 0 — Clarify the creation workflow
+## Phase 0 — Clarify the project-creation workflow
 
-Before settings questions, state the pipeline in one short block and get
-explicit OK (or edits):
+The miniApp skill phases are fixed — do **not** ask the user to approve or amend
+this skill's pipeline. Phase 0 grills how **new projects are created** in the
+user's world (facts you look up; decisions they own).
 
-1. Grill project **settings** (architecture, structure, source control, stack)
-2. Research **lean libraries**; write into the register RAG index
-3. Search for **free similar projects**; offer a review-fork path
-4. Scaffold **structure + agentic setup**; `git init` and push to the chosen remote
-5. User reviews structure
-6. Write a **bare handoff** so opening the new project starts Pickup alignment
+Grill the frontier (one question per turn unless they ask for the full frontier).
+Look up what you can first (existing project roots, remotes, naming patterns):
 
-**Done when:** user confirms or amends this workflow; `STATUS.md` updated.
+| Decision | Examples |
+|----------|----------|
+| Local home for new projects | parent folder(s), machine-specific roots |
+| Naming | kebab-case, org prefix, date suffix |
+| New repo vs existing | always new remote, or nest under a monorepo / umbrella |
+| Who creates the remote | agent via `gh`/`glab`/Gitea, or user creates and pastes URL |
+| Default visibility | public / private / internal |
+| Bootstrap habits | empty commit first, LICENSE/README stubs, default branch name |
+
+Persist settled answers into register `SETTINGS.md` under **Project creation**.
+
+**Done when:** frontier empty on how projects get created here; `STATUS.md` updated.
 
 ## Phase 1 — Register + settings grill
 
@@ -159,7 +167,7 @@ Redirect:
 - **Stack is chosen in the settings grill**, not assumed.
 - Honour the **lean bar** from SETTINGS (reuse over rewrite; thin maintained libs).
 - **Register every durable decision** (see [register.md](register.md)).
-- **Scaffold only after** settings are locked and the user confirms the creation workflow.
+- **Scaffold only after** project-creation workflow (Phase 0) and settings (Phase 1) are locked.
 - **Inform before inventing** — surface free similar projects first; ask before a review fork.
 
 ### Orchestration notes
