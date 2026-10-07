@@ -2,11 +2,10 @@
 
 ## Write (end of creation)
 
-Create `MINIAPP-HANDOFF.md` at the **new project root** and record paths in
-register `links.md`. This is a **bare** handoff: enough for a fresh agent to
-start Pickup, not a dump of the whole chat.
+Bare handoff at project root + register `links.md` — enough for Pickup, not a
+chat dump.
 
-### links.md (required at close-out)
+### links.md
 
 ```markdown
 # Links — <slug>
@@ -17,9 +16,11 @@ start Pickup, not a dump of the whole chat.
 - Handoff: `<absolute path to MINIAPP-HANDOFF.md>`
 ```
 
-After writing the handoff, the orchestrator **must** surface these as **clickable
-Markdown links** in the closing message (and open the project per SKILL.md Phase 5
-Close-out):
+### Close-out (required)
+
+Resolve remote URL + absolute local path from `links.md` / git. Emit **clickable
+Markdown links** (not backtick-only paths); open project folder (and remote page
+when remote exists) when the harness allows:
 
 ```markdown
 - Repo: [project on GitHub](https://github.com/org/repo)
@@ -27,51 +28,41 @@ Close-out):
 - Handoff: [MINIAPP-HANDOFF.md](file:///P:/Projects/repo/MINIAPP-HANDOFF.md)
 ```
 
-Use `https://` for remotes and `file:///` (forward slashes) for local paths. Do not
-leave access as backtick-only paths.
+Use `https://` for remotes and `file:///` (forward slashes) for local. Local-only:
+local + handoff links. Remote: remote + local + handoff.
+
+### MINIAPP-HANDOFF.md
 
 ```markdown
 # MiniApp handoff — <project name>
 
 ## Pickup
-Invoke the **miniapp** skill in this repo (Pickup mode). Stay on alignment;
-scaffold is already done.
+Invoke **miniapp** (Pickup mode). Alignment only; scaffold is done.
 
 ## Register
 - Slug: `<slug>`
 - Register root: `~/.agents/miniapp-register/projects/<slug>/`
-- SETTINGS: `…/SETTINGS.md`
-- Research: `…/research/`
-- Global index: `~/.agents/miniapp-register/INDEX.md`
+- SETTINGS / Research / Global index: under that root; `INDEX.md` at register root
 
-## Settled (gist only — details in register)
-- Primary task:
-- Architecture:
-- Structure:
-- Stack:
-- Local path:
-- Remote URL:
+## Settled (gist — details in register)
+- Primary task / Architecture / Structure / Stack / Local / Remote:
 
 ## Lean bar
 <one paragraph from SETTINGS>
 
-## Suggested skills (in order)
-1. miniapp (Pickup) — this session only
-2. grill-with-docs (alignment) — loads grilling + domain-modeling
-3. After alignment / for all later work: grill-with-docs first (standing rule
-   `.cursor/rules/grill-with-docs.mdc`), then to-spec → to-tickets → implement
-   (or implement alone if small)
+## Suggested skills
+1. miniapp (Pickup) — this session
+2. grill-with-docs — alignment, then standing default
+3. to-spec → to-tickets → implement (or implement alone if small)
 
 ## Guardrails
-- Keep stack and dependencies aligned with register research, ADRs, and
-  `.cursor/rules/project-settings.mdc` unless the alignment grill explicitly changes them
-- Expand scope beyond the lean bar only via ADR
-- Outside miniapp Create/Pickup, always grill-with-docs before implementing
-- If project-settings.mdc is missing or drifts from SETTINGS, regenerate it from
-  the register before further build work
+- Stack/deps follow register research, ADRs, `.cursor/rules/project-settings.mdc`
+  unless alignment grill changes them
+- Scope past lean bar only via ADR
+- If project-settings.mdc missing/drifts, regenerate from register SETTINGS first
 ```
 
-Also ensure repo-root `MINIAPP.md` exists:
+### MINIAPP.md (repo root)
 
 ```markdown
 # MiniApp
@@ -82,19 +73,15 @@ Register: `~/.agents/miniapp-register/projects/<slug>/`
 Handoff: see `MINIAPP-HANDOFF.md`
 ```
 
-Commit these with the skeleton when the user accepts structure.
+Commit with skeleton when structure is accepted.
 
 ## Pickup (Phase H)
 
 1. Read `MINIAPP-HANDOFF.md` and register `SETTINGS.md`
-2. RAG: open `INDEX.md`, then matching stack + this project's `research/`
-3. Run grill-with-docs to align the user (architecture, seams, lean bar,
-   first vertical slice) — decisions still belong to the user
-4. Re-state the **lean bar** from SETTINGS; re-litigate stack only if the grill
-   overturns it
-5. When frontier is empty and user confirms, stop or continue into the main
-   engineering flow they choose
+2. RAG: `INDEX.md`, then matching stack + this project's `research/`
+3. grill-with-docs for alignment (architecture, seams, lean bar, first vertical
+   slice) — user owns decisions
+4. Re-state lean bar; re-litigate stack only if grill overturns it
+5. Frontier empty + user confirms → stop or continue into their chosen flow
 
-**Done when:** grill frontier empty, user confirms alignment; then stop or hand
-off to the flow they choose (see Suggested skills). Update register `STATUS.md`
-checkbox H.
+**Done when:** alignment confirmed; update register `STATUS.md` checkbox H.

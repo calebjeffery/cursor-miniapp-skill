@@ -1,46 +1,39 @@
 # MiniApp register
 
-Durable memory for every miniApp process. Later projects **RAG** this store
-instead of rediscovering the same stack facts.
+Durable memory; later miniApps **RAG** this store.
 
 ## Root
 
 ```
 ~/.agents/miniapp-register/
-├── INDEX.md                 # Global RAG index (always update)
-├── projects/
-│   └── <slug>/
-│       ├── SETTINGS.md      # Locked project settings
-│       ├── CONTEXT.md       # Glossary (domain-modeling)
-│       ├── STATUS.md        # Checklist phase + timestamps
-│       ├── research/        # Cited stack / library research
-│       ├── similar/         # Similar free-project finds
-│       └── links.md         # Repo path, remote URL, handoff path
-└── stacks/
-    └── <stack-slug>/
-        └── INDEX.md         # Cross-project notes for this stack
+├── INDEX.md
+├── projects/<slug>/
+│   ├── SETTINGS.md
+│   ├── CONTEXT.md
+│   ├── STATUS.md
+│   ├── research/
+│   ├── similar/
+│   └── links.md
+└── stacks/<stack-slug>/INDEX.md
 ```
 
-Resolve `~` via the environment home directory (`$HOME` / `%USERPROFILE%`); do
-not hardcode OS-specific paths in new entries.
+Resolve `~` via `$HOME` / `%USERPROFILE%`.
 
 ## Slug
 
-Lowercase kebab-case from the project name (`family-os-planner`). If collision,
-append a short year-month suffix (`family-os-planner-2026-09`).
+Lowercase kebab-case from project name. On collision, append `YYYY-MM`.
 
 ## Write rules
 
-1. **Single source of truth.** A decision lives in `SETTINGS.md` or one ADR —
-   the index only gists and links.
-2. **Update INDEX.md** whenever you add research or finish a phase.
-3. **Update STATUS.md** after every phase (timestamp + checkbox).
-4. **No secrets.** Remotes, paths, stack names — yes. Tokens, passwords — never.
-5. **Cite.** Every research claim points at a primary URL or package page.
+1. **Single source of truth** — decision in `SETTINGS.md` or one ADR; index gists + links.
+2. Update `INDEX.md` when adding research or finishing a phase.
+3. Update `STATUS.md` after every phase (timestamp + checkbox).
+4. **No secrets** — remotes/paths/stack names only.
+5. **Cite** — every research claim → primary URL or package page.
 
-## STATUS.md template
+## STATUS.md
 
-```markdown
+````markdown
 # Status — <slug>
 
 Updated: <ISO-8601>
@@ -59,9 +52,9 @@ MiniApp progress:
 ## Notes
 - Phase: <n or H>
 - Similar-project choice: <continue | review-fork | —>
-```
+````
 
-## SETTINGS.md template
+## SETTINGS.md
 
 ```markdown
 # <Project name>
@@ -70,18 +63,13 @@ MiniApp progress:
 <one sentence>
 
 ## Lean bar
-<what "smallest maintainable surface" means here>
+<smallest maintainable surface here>
 
 ## Non-goals
 -
 
 ## Project creation
-- Local parent path:
-- Naming convention:
-- New repo vs monorepo/nest:
-- Who creates the remote:
-- Default visibility:
-- Bootstrap habits:
+- Local parent path / Naming / New vs nest / Who creates remote / Visibility / Bootstrap:
 
 ## Architecture
 -
@@ -90,10 +78,7 @@ MiniApp progress:
 -
 
 ## Source control
-- Host:
-- Remote:
-- Visibility:
-- Local path:
+- Host / Remote / Visibility / Local path:
 
 ## Stack (and where used)
 | Layer | Language / runtime | Libraries |
@@ -104,38 +89,19 @@ MiniApp progress:
 - continue | review-fork
 ```
 
-## INDEX.md entry shape
-
-Append under the matching section (Projects / Stacks / Research):
+## INDEX.md entries
 
 ```markdown
-- [<slug>](projects/<slug>/SETTINGS.md) — <one-line gist>; stack=<stack-slug>; status=<phase>
-```
-
-Research rows:
-
-```markdown
-- [<title>](projects/<slug>/research/<file>.md) — stack=<stack-slug>; tags=lib,pattern,…
+- [<slug>](projects/<slug>/SETTINGS.md) — <gist>; stack=<stack-slug>; status=<phase>
+- [<title>](projects/<slug>/research/<file>.md) — stack=<stack-slug>; tags=…
 ```
 
 ## RAG habit
 
-Before recommending libraries for a new miniApp:
-
-1. Read `INDEX.md`
-2. Open matching `stacks/<stack-slug>/` and prior `research/` files
-3. Reuse what still holds; only re-research what is missing or stale
-4. Note reuse in the new project's `research/` ("carried from `<slug>`")
+Before recommending libraries: read `INDEX.md` → matching `stacks/` + prior
+`research/` → reuse what holds; re-research only missing/stale; note carries in
+new `research/`.
 
 ## links.md
 
-Always filled at Create close-out (Phase 5). At minimum:
-
-```markdown
-# Links — <slug>
-
-- Local path: `<absolute path>`
-- Remote URL: `<https project page or —>`
-- Clone URL: `<… or —>`
-- Handoff: `<absolute path to MINIAPP-HANDOFF.md>`
-```
+Filled at Create close-out. Shape and close-out: [handoff.md](handoff.md) § Write.

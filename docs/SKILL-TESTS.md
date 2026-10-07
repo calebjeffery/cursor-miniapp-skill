@@ -54,3 +54,38 @@ Scenarios 1–6 live as `docs/test-pressure-*.md` for re-runs.
 
 Point an agent at `docs/test-pressure-*.md` with only `skill/` on the path and
 score A/B against Expected in this report.
+
+## Token optimisation pass (2026-10-08)
+
+Thin-router rewrite: Mode → `create.md` (0–3) / `scaffold.md` (4–5) / `handoff.md`
+(Pickup). Checklist + links SoT in register/handoff; alwaysApply templates slimmed.
+
+| Load path | Before (~tok) | After (~tok) |
+|-----------|---------------|--------------|
+| SKILL.md alone | ~2,700 | ~400 |
+| Pickup (SKILL + handoff) | full skill | ~1,100 |
+| Create 0–3 + register | full skill | ~1,600 |
+| alwaysApply templates | ~490 | ~320 |
+
+### Re-run results (2026-10-08, branch `cursor/token-optimize-skill-23f8`)
+
+Isolated agents read only `skill/` (+ the scenario file). Expected answer for all
+rows is **A**.
+
+| # | Choice | Result | Skill cite (agent) | Files opened |
+|---|--------|--------|--------------------|--------------|
+| 1 | A | PASS | create.md Phase 0 then 1–3 before scaffold; pipeline fixed | SKILL.md, create.md |
+| 2 | A | PASS | stack from settings grill, not assumed | SKILL.md, create.md |
+| 3 | A | PASS | Phase 3 similar → continue\|review-fork before scaffold.md | SKILL.md, create.md, scaffold.md |
+| 4 | A | PASS | Win32/ml64/Crinkler → tinyapp | SKILL.md |
+| 5 | A | PASS | Mode → Pickup / handoff.md § Pickup only | SKILL.md, handoff.md |
+| 6 | A | PASS | review-fork pauses original scaffold | SKILL.md, create.md |
+| 7* | A | PASS | force-push/secrets out of scope | SKILL.md, scaffold.md |
+| 8* | A | PASS | settings/alignment via grill-with-docs only | SKILL.md, create.md |
+
+\* No `test-pressure-*.md` file; synthetic scenarios matching the historical table.
+
+**Score: 8/8 PASS** on thin-router wording.
+
+Disclosure note: test 3 opened `scaffold.md` while deciding the similar-projects
+gate (correct choice still). Pickup (test 5) stayed on SKILL + handoff only.
