@@ -1,14 +1,12 @@
 # Research worker brief
 
-Give this brief to the subagent / background researcher. Fill the bracketed
-fields from the register `SETTINGS.md` before dispatch.
+Fill brackets from register `SETTINGS.md`; give this file to the subagent only.
 
 ---
 
 ## Mission
 
-Find the **smallest maintainable surface** for this miniApp's stack — libraries
-and patterns that keep code volume low while staying solid for growth.
+Smallest maintainable surface for this stack — thin libs/patterns, solid for growth.
 
 ## Project
 
@@ -20,52 +18,46 @@ and patterns that keep code volume low while staying solid for growth.
 - Lean bar: `<lean bar>`
 - Non-goals: `<non-goals>`
 
-## Output paths (write these files)
+## Output paths
 
 1. `~/.agents/miniapp-register/projects/<slug>/research/stack-libraries.md`
 2. `~/.agents/miniapp-register/projects/<slug>/research/patterns-and-structures.md`
-3. Update `~/.agents/miniapp-register/INDEX.md` with links + tags
-4. Upsert `~/.agents/miniapp-register/stacks/<stack-slug>/INDEX.md` with a short
-   cross-project note
+3. Update `~/.agents/miniapp-register/INDEX.md`
+4. Upsert `~/.agents/miniapp-register/stacks/<stack-slug>/INDEX.md`
 
-## Ranking criteria (in order)
+## Ranking (order)
 
-1. **Small surface** — few APIs to learn; thin wrappers over the platform/runtime
-2. **Maintained** — active upstream, clear license (prefer permissive OSS)
-3. **SOLID fit** — dependency direction stays clean; easy to swap adapters
-4. **Right data structures** — pick structures that match access patterns; say why
-5. **Named patterns** — only when they reduce code or clarify seams (ports/adapters,
-   strategy, repository, etc.)
-6. **Reuse** — prefer stdlib / existing platform capability over a new dependency
+1. **Small surface** — few APIs; thin wrappers over platform/runtime
+2. **Maintained** — active upstream; clear permissive-leaning license
+3. **SOLID fit** — clean dependency direction; swappable adapters
+4. **Right data structures** — match access patterns; say why
+5. **Named patterns** — only when they cut code or clarify seams
+6. **Reuse** — stdlib / platform over a new dependency
 
-## Deprioritize (pick the smaller default instead)
+## Prefer smaller defaults
 
 | Temptation | Prefer |
 |------------|--------|
 | Kitchen-sink framework | Thin lib or stdlib for the one job |
-| Abandoned package | Maintained alternative or platform API |
-| Second ORM / HTTP stack | The one already chosen in SETTINGS |
-| Enterprise layer duplicating the runtime | Direct use of the runtime feature |
+| Abandoned package | Maintained alt or platform API |
+| Second ORM / HTTP stack | The one in SETTINGS |
+| Enterprise layer over runtime | Direct runtime feature |
 
 ## Method
 
-- Primary sources only (official docs, GitHub/source, package registry pages)
-- Cite every recommendation with URL + version or "as of `<date>`"
-- Compare at most 3 candidates per concern; pick one default + one escape hatch
-- If a prior register research file covers this stack, **start there** and only
-  extend what is missing
+- Primary sources only; cite URL + version or "as of `<date>`"
+- ≤3 candidates per concern; one default + one escape hatch
+- Prior register research for this stack: start there; extend gaps only
 
 ## patterns-and-structures.md must include
 
-- Recommended module/folder seams matching the chosen architecture
-- Data structures for the core domain entities (and why)
-- Patterns that keep the codebase lean at the stated scale
-- **Defer until scale demands:** list with explicit triggers (e.g. second adapter,
-  second transport, multi-tenant tenancy)
+- Module/folder seams for chosen architecture
+- Data structures for core entities (+ why)
+- Lean patterns at stated scale
+- **Defer until scale demands** — with explicit triggers
 
 ## Done means
 
 - Both research files written and cited
-- INDEX.md and stack shard updated
-- One short "recommended default stack" summary at the top of `stack-libraries.md`
-  the orchestrator can read aloud to the user
+- INDEX.md + stack shard updated
+- Short "recommended default stack" summary at top of `stack-libraries.md`

@@ -54,3 +54,18 @@ Scenarios 1–6 live as `docs/test-pressure-*.md` for re-runs.
 
 Point an agent at `docs/test-pressure-*.md` with only `skill/` on the path and
 score A/B against Expected in this report.
+
+## Token optimisation pass (2026-10-08)
+
+Thin-router rewrite: Mode → `create.md` (0–3) / `scaffold.md` (4–5) / `handoff.md`
+(Pickup). Checklist + links SoT in register/handoff; alwaysApply templates slimmed.
+
+| Load path | Before (~tok) | After (~tok) |
+|-----------|---------------|--------------|
+| SKILL.md alone | ~2,700 | ~400 |
+| Pickup (SKILL + handoff) | full skill | ~1,100 |
+| Create 0–3 + register | full skill | ~1,600 |
+| alwaysApply templates | ~490 | ~320 |
+
+Re-run pressure tests 1–6 (+ expected 7–8 from table) against `skill/` on this branch
+before merging.

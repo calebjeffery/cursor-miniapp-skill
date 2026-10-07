@@ -19,7 +19,7 @@
 ## Design choices
 
 1. **User-invoked skill** (`disable-model-invocation: true`) — deliberate project creation, not ambient auto-fire.
-2. **Progressive disclosure** — `SKILL.md` holds the pipeline; register, research brief, and handoff live in sibling files.
+2. **Progressive disclosure** — `SKILL.md` is a Create/Pickup router; Create phases live in `create.md` / `scaffold.md`; register, research brief, and handoff stay sibling files.
 3. **Register outside the skill** — personal memory and RAG index must not ship inside the git skill repo.
 4. **Reuse interview primitives** — do not invent a second grilling style; call Matt Pocock’s skills.
 5. **Similar projects before scaffold** — inform and offer a review-fork path so free prior art is not ignored.

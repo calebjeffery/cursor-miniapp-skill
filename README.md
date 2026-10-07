@@ -55,17 +55,19 @@ cursor-miniapp-skill/
 ├── README.md
 ├── LICENSE
 ├── skill/
-│   ├── SKILL.md           # Orchestrator
+│   ├── SKILL.md           # Thin Create/Pickup router
+│   ├── create.md          # Phases 0–3 (grill, research, similar)
+│   ├── scaffold.md        # Phases 4–5 (structure, git, handoff)
 │   ├── register.md        # Register + RAG rules
 │   ├── research-brief.md  # Subagent research brief
 │   ├── handoff.md         # Handoff template + Phase H
-│   └── agents/
-│       └── openai.yaml
+│   ├── agents/openai.yaml
 │   └── templates/
-│       └── grill-with-docs.mdc
+│       ├── grill-with-docs.mdc
 │       └── project-settings.mdc
 └── docs/
-    └── CREATION-PROCESS.md
+    ├── CREATION-PROCESS.md
+    └── SKILL-TESTS.md
 ```
 
 ## Related
